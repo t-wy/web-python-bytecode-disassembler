@@ -37,28 +37,3 @@ function handleBytes_pyc(bytes, lines, version_override=null) {
     }
     return children;
 }
-
-function show_hex(bytes) {
-    let rem = 0;
-    let tmp = [];
-    let tmp2 = "";
-    let output = [];
-    bytes.forEach(b => {
-        tmp.push(b.toString(16).padStart(2, "0"));
-        tmp2 += b >= 32 ? String.fromCharCode(b) : ".";
-        if (++rem == 16) {
-            output.push(tmp.join(" ") + " | " + tmp2 + " |");
-            tmp = [];
-            tmp2 = "";
-            rem = 0;
-        }
-    });
-    if (rem !== 0) {
-        while (tmp.length < 16) {
-            tmp.push("  ");
-            tmp2 += " ";
-        }
-        output.push(tmp.join(" ") + " | " + tmp2 + " |");
-    }
-    return output;
-}
